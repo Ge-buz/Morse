@@ -1,8 +1,6 @@
 let coded = document.getElementById("coded")
 let decoded = document.getElementById("decoded")
-
-console.log(document.getElementById('bananas'))
-console.log(document.getElementById("decoded"))
+let final = document.getElementById("final")
 
 const pulse = 115; //menos es dot, mas es dash
 let stopWord = 0;
@@ -13,34 +11,34 @@ let decodedChars = [] // letras decodificadas por separado
 let morseChar = [] // dots y dashes 
 let keys = {}; //guarda el momento en el que se apretó la tecla
 const morseCode = {
-    "._": "a",
-    "_...": "b",
-    "_._.": "c",
-    "____": "ch",
-    "_..": "d",
-    ".": "e",
-    ".._.": "f",
-    "__.": "g",
-    "....": "h",
-    "..": "i",
-    ".___": "j",
-    "_._": "k",
-    "._..": "l",
-    "__": "m",
-    "_.": "n",
-    "__.__": "ñ",
-    "___": "o",
-    ".__.": "p",
-    "__._": "q",
-    "._.": "r",
-    "...": "s",
-    "_": "t",
-    ".._": "u",
-    "..._": "v",
-    ".__": "w",
-    "_.._": "x",
-    "_.__": "y",
-    "__..": "z",
+    "._": "A",
+    "_...": "B",
+    "_._.": "C",
+    "____": "CH",
+    "_..": "D",
+    ".": "E",
+    ".._.": "F",
+    "__.": "G",
+    "....": "H",
+    "..": "I",
+    ".___": "J",
+    "_._": "K",
+    "._..": "L",
+    "__": "M",
+    "_.": "N",
+    "__.__": "Ñ",
+    "___": "O",
+    ".__.": "P",
+    "__._": "Q",
+    "._.": "R",
+    "...": "S",
+    "_": "T",
+    ".._": "U",
+    "..._": "V",
+    ".__": "W",
+    "_.._": "X",
+    "_.__": "Y",
+    "__..": "Z",
     "_____": "0",
     ".____": "1",
     "..___": "2",
@@ -57,7 +55,7 @@ const morseCode = {
 }
 
 const checkForStopChar = (timer, lastPress) => {
-    if (lastPress !== 0 && timer - lastPress > pulse * 10 && morseChar.length) {
+    if (lastPress !== 0 && timer - lastPress > pulse * 6 && morseChar.length) {
         if (morseCode[morseChar.join('')]) {
             decodedChars.push(morseCode[morseChar.join('')]);
             decoded.innerText = decodedChars.join('');
@@ -76,16 +74,18 @@ const checkForStopWord = (key) => {
     if (key === "Enter" && decodedChars.length) {
         finalSentence = finalSentence + decodedChars.join('') + " ";
         decodedChars = [];
-        decoded.innerText = decoded.innerText + finalSentence
-        console.log("Sentence", finalSentence)
+        final.innerText = final.innerText + finalSentence
+        decoded.innerText = ""
     }
+
+    if (key === "x" || key === "X") finalSentence = ""
 
 }
 
 const dotOrDash = (press, key) => {
-    if (key === "Backspace") { decodedChars?.pop(); console.log("clear"); }
+    if (key === "Backspace") { decodedChars?.pop(); decoded.innerText = decodedChars.join('') }
     if (morseChar.length <= 5 && press <= pulse * 7) {
-        if (key === "b")  //
+        if (key === "v" || key === "V")  //
             if (press >= pulse * 2) {
                 morseChar.push("_");
             } else if (press <= pulse * 2) morseChar.push(".");
@@ -97,10 +97,6 @@ const dotOrDash = (press, key) => {
         lastPress = 0;
     }
 }
-
-// const clearWord = (press) => {
-//     if (press >= pulse * 7) morseChar = [];
-// }
 
 setInterval(() => {
     timer = Date.now()

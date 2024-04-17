@@ -8,7 +8,10 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="meow">
+    <div class="title">
+      <h1>Morse Writer</h1>
+    </div>
+    <div class="dictionary">
       <p>__._ : Q</p>
       <p>.__ : W</p>
       <p>. : E</p>
@@ -50,12 +53,25 @@
       <p>__..__ : ,</p>
       <p>..__.. : ?</p>
     </div>
-    <div class="morse">
-      <p>Morse Code</p>
-      <p id="coded" class="morse__code"></p>
-      <p>Decoded Characters</p>
-      <p id="decoded" class="morse__decoded"></p>
+    <div class="content">
+      <div class="content__morse">
+        <p>Morse Code</p>
+        <p id="coded" class="morse__code"></p>
+        <p>Decoded Characters</p>
+        <p id="decoded" class="morse__decoded"></p>
+        <p>Final Sentence</p>
+        <p id="final"></p>
+      </div>
+      <div class="content__instructions">
+        <h3>Instructions</h3>
+        <p>Write using the "V" Key</p>
+        <p>Erase characters with "Backspace"</p>
+        <p>Use "Enter" to submit word</p>
+      </div>
     </div>
+    <p class="footer">
+      Lets face it, you're not winning any prizes for writing with a single key.
+    </p>
   </body>
   <script type="text/javascript" src="index.js"></script>
 </html>

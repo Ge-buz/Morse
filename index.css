@@ -8,13 +8,44 @@
     font-style: normal;
 }
 
+.title{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
 p{
     color: white;
     font-weight:bold;
 }
 
-.meow{
+.dictionary{
     display:grid;
     text-align: center;
     grid-template-columns: repeat(10, 130px [col-start]);
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 200px;
+    .content__morse{
+        
+    }
+    .content__instructions{
+        color: rgb(255, 255, 255);
+        text-align: end;
+        p{
+            color: rgb(145, 145, 145); 
+        }
+
+    }
+}
+
+.footer{
+    text-align: center;
+    color: rgb(65, 65, 65);
+    font-size: smaller;
 }
